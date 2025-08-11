@@ -1,6 +1,6 @@
 export class Node {
-    constructor(data, ...args) {
+    constructor(data) {
         this.data = data;
-        this.children = args;
+        
     }
 }

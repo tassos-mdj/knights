@@ -1,15 +1,23 @@
 import { Node } from "./node";
 
 export class KnightMap {
-    constructor(start) {
+    constructor(start, finish) {
         // this.root = bulidTree(start);
         this.start = start;
+        this.finish = finish;
     }
 
     // Build possible moves tree
-    bulidTree(start) {
+    bulidTree(start = this.start, finish = this.finish) {
+        if (start === finish) {return;}
 
-        const newRoot = new Node(start)
+        const nextMovesList = this.nextMoves(start);
+        const nextMovesListLength = nextMovesList.length;
+        const newRoot = new Node(start);
+        for (let i = 0; i < nextMovesListLength; i++) {
+            newRoot.next[i] = new Node(nextMovesList[i]);
+            this.bulidTree(next[i].data, finish);
+        }
 
         return newRoot;
     }
